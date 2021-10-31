@@ -1,2 +1,4 @@
 ./00-Practicas
 0A-Puppeteer/node_modules
+node_modules/
+/salida/*.txt
