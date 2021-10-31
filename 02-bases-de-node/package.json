@@ -1,0 +1,16 @@
+{
+  "name": "02-bases-de-node",
+  "version": "0.0.1",
+  "description": "Tabla de multiplicar con archivo de texto",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Cristian Paiva",
+  "license": "MIT",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "yargs": "^17.2.1"
+  },
+  "devDependencies": {}
+}
