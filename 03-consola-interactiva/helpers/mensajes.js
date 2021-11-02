@@ -38,6 +38,7 @@ const mostrarMenu = () => {
 
 // pausa de la aplciación
 const pausa = () => {
+
   return new Promise ((resolve) => {
     const readline = require('readline').createInterface ({
       input: process.stdin,
@@ -50,6 +51,7 @@ const pausa = () => {
       resolve();
     });
   })
+
 }
 
 
