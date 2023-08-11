@@ -4,4 +4,3 @@ sharp('original.png')
   .resize(80)
   .grayscale()
   .toFile('resize.png');
-  
