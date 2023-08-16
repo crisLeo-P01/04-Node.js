@@ -1,62 +1,54 @@
-//> https://blog.soyhenry.com/que-es-node-js-y-para-que-se-utiliza/
-
 const express = require('express');
-const { faker } = require('@faker-js/faker');
+const UsersService = require('../services/users.service');
 
 //> Crea un enrutador utilizando la funcionalidad de Express para manejar rutas y solicitudes.
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  const persons = [];
+const service = new UsersService();
 
-  //> Obtiene el valor del parámetro de consulta 'size' de la solicitud
-  const {size} = req.query;
+//> FIND USER
+router.get('/', async (req, res) => {
+  const users = await service.find();
+  res.json(users);
+});
 
-  //> Define un límite de generación de datos. Si 'size' no está especificado, se usa 10 como valor predeterminado.
-  const limit = size || 10;
-
-  for(let i = 0; i < limit; i++) {
-    persons.push({
-      name: faker.person.fullName(),
-      sex: faker.person.sex(),
-      jobArea: faker.person.jobArea(),
-      Image: faker.image.avatar()
-    })
-  }
-
-  //> Envía los datos generados en formato JSON como respuesta a la solicitud.
-  res.json(persons);
-})
-
-router.get('/:id', (req, res) => {
-
+//> FIND A USER FOR ID
+router.get('/:id', async (req, res) => {
   //> Obtiene el valor del parámetro de ruta 'id' de la solicitud.
   const {id} = req.params;
-  res.json({
-    id,
-    name: faker.person.fullName(),
-    sex: faker.person.sex(),
-    jobArea: faker.person.jobArea(),
-    Image: faker.image.avatar()
-  })
-})
+  const user = await service.findOne(id);
+  res.json(user);
+});
 
-router.get('/', (req, res) => {
-  const {limit, offset} = req.query;
+//> CREATE USER
+router.post('/', async (req, res) => {
+  const body = req.body;
+  const newUser = await service.create(body);
+  res.status(201).json(newUser);
+});
 
-  //> Verifica si tanto 'limit' como 'offset' están presentes en los parámetros de consulta.
-  if(limit && offset) {
-
-    //> Si ambos parámetros están presentes, responde con un objeto JSON que contiene los valores de 'limit' y 'offset'.
-    res.json({
-      limit,
-      offset
+//> UPDATE USER
+router.patch('/:id', async (req, res) => {
+  try {
+    const {id} = req.params;
+    const body = req.body;
+    const user = await service.update(id, body);
+    res.json(user);
+  } catch(err) {
+    res.status(404).json({
+      message: err.message
     })
-  } else {
-
-    //> Si al menos uno de los parámetros no está presente, responde con un mensaje indicando que no hay parámetros suficientes.
-    res.send('No hay parámetros');
   }
+});
+
+//> DELETE USER
+router.delete('/:id', async (req, res) => {
+  const {id} = req.params;
+  const rta = await service.delete(id);
+  res.json(rta);
 })
+
+
+
 
 module.exports = router;
