@@ -22,7 +22,7 @@ class UsersService {
     }
   };
 
-  async create(data) {
+  create(data) {
     const newUser = {
       id: faker.datatype.uuid(),
       ...data
@@ -39,11 +39,11 @@ class UsersService {
     })
   };
 
-  async findOne(id) {
+  findOne(id) {
     return this.users.find(item => item.id === id);
   };
 
-  async update(id, changes) {
+  update(id, changes) {
     const index = this.users.findIndex(item => item.id === id);
     if(index === -1) {
       throw new Error('User Not Found');
@@ -56,7 +56,7 @@ class UsersService {
     return this.users[index];
   };
 
-  async delete(id) {
+  delete(id) {
     const index = this.users.findIndex(item => item.id === id);
     if(index === -1) {
       throw new Error(`El usuario con el ${id} no se encuentra`);
