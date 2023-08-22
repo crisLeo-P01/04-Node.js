@@ -15,6 +15,7 @@ class ProductsService {
         name: faker.commerce.productName(),
         price: parseInt(faker.commerce.price(), 10),
         image: faker.image.imageUrl(),
+        isBlock: faker.datatype.boolean()
       })
     }
   }
@@ -35,7 +36,10 @@ class ProductsService {
   async findOne(id) {
     const product = this.products.find(item => item.id === id);
     if(!product) {
-      throw boom.notFound('Product Not Found');
+      throw boom.notFound('El producto no se encuentra');
+    }
+    if(product.isBlock) {
+      throw boom.conflict('Product is block');
     }
     return product;
   }
@@ -60,7 +64,7 @@ class ProductsService {
       throw boom.notFound('Product Not Found');
     }
     this.products.splice(index, 1);
-    return {id};
+    return `El usuario con el ID ${id} fue eliminado exitósamente`;
   }
 }
 

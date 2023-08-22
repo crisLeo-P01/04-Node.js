@@ -1,0 +1,12 @@
+**Clear architecture**
+
+https://platzi.com/blog/arquitectura-hexagonal/
+
+https://xurxodev.com/por-que-utilizo-clean-architecture-en-mis-proyectos/
+
+https://platzi.com/clases/1619-arquitectura-android/21324-que-es-clean-architecture/
+
+https://enviame.io/clean-architecture-en-enviame/
+
+ESPECIAL DE NODEJS Y EXPRESS
+https://www.linkedin.com/pulse/clean-architecture-en-node-y-express-odannys-de-la-cruz/?originalSubdomain=es

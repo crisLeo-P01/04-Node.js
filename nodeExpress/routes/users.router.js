@@ -13,11 +13,15 @@ router.get('/', async (req, res) => {
 });
 
 //> FIND A USER FOR ID
-router.get('/:id', async (req, res) => {
-  //> Obtiene el valor del parámetro de ruta 'id' de la solicitud.
-  const {id} = req.params;
-  const user = await service.findOne(id);
-  res.json(user);
+router.get('/:id', async (req, res, next) => {
+  try {
+    //> Obtiene el valor del parámetro de ruta 'id' de la solicitud.
+    const {id} = req.params;
+    const user = await service.findOne(id);
+    res.json(user);
+  } catch(error) {
+    next(error);
+  }
 });
 
 //> CREATE USER
@@ -28,16 +32,17 @@ router.post('/', async (req, res) => {
 });
 
 //> UPDATE USER
-router.patch('/:id', async (req, res) => {
+router.patch('/:id', async (req, res, next) => {
   try {
     const {id} = req.params;
     const body = req.body;
     const user = await service.update(id, body);
     res.json(user);
   } catch(err) {
-    res.status(404).json({
-      message: err.message
-    })
+    next(err);
+    // res.status(404).json({
+    //   message: err.message
+    // })
   }
 });
 
