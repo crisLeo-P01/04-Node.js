@@ -14,18 +14,18 @@ class UsersService {
 
     for(let i = 0; i < limit; i++) {
       this.users.push({
-        id: faker.datatype.uuid(),
+        id: faker.string.uuid(),
         name: faker.person.fullName(),
         sex: faker.person.sex(),
         jobArea: faker.person.jobArea(),
-        Image: faker.image.avatar()
+        Image: faker.image.url()
       })
     }
   };
 
   async create(data) {
     const newUser = {
-      id: faker.datatype.uuid(),
+      id: faker.string.uuid(),
       ...data
     }
     this.users.push(newUser);
