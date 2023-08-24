@@ -28,7 +28,7 @@ app.use(express.json());
 //> Utilizamos los middleware. Siempre deben ir después del routing:
 routerApi(app);
 
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
   res.send('Hola, mi server en express');
 });
 
