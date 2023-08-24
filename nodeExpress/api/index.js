@@ -3,10 +3,10 @@ const express = require('express');
 const routerApi = require('./routes');
 
 //> Importar middleware e importamos las funciones que se uilizarán
-const {logErrors, errorHandler, boomErrorHandler} = require('../nodeExpress/middleware/error.handler');
+const {logErrors, errorHandler, boomErrorHandler} = require('./middleware/error.handler');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 //> Habilita para que todos los origenes puedan acceder a las peticiones
 // app.use(cors());
