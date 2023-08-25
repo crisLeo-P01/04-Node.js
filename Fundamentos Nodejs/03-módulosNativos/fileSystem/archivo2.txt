@@ -1,0 +1,4 @@
+Hola, soy un archivo
+y tengo varias líneas
+con el nombre de
+archivo2
