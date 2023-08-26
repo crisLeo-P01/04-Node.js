@@ -14,10 +14,18 @@
   "dependencies": {
     "bcrypt": "^5.1.0",
     "electron": "^25.5.0",
+    "eslint": "^8.47.0",
     "gulp": "^4.0.2",
     "is-odd": "^3.0.1",
     "moment": "^2.29.4",
+    "picocolors": "^1.0.0",
     "puppeteer": "^21.0.3",
     "sharp": "^0.32.4"
+  },
+  "eslintConfig": {
+    "extends": "standard"
+  },
+  "devDependencies": {
+    "standard": "^17.1.0"
   }
 }

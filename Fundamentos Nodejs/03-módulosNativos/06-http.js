@@ -1,7 +1,6 @@
-const http = require('http');
+const http = require('node:http')
 
-/*  ////
-El http tiene una función con dos parametros, request y response.
+/* El http tiene una función con dos parametros, request y response.
 Una petición desde un cliente hacia un servidor es una request,
 en la que tendrá cabeceras, métodos, etc.. y el servidor mandará
 una respuesta al cliente con esa información /// */
@@ -19,24 +18,33 @@ una respuesta al cliente con esa información /// */
 //   res.end();
 // }).listen(3000)
 
-http.createServer(router).listen(3000);
-function router(req, res) {
-    console.log('Nueva petición!');
-    console.log(req.url);
-  
-    switch(req.url) {
-      case '/hola':
-        res.writeHead(201, {'Content-Type': 'text/plain'})
-        res.write('Hola, que tal');
-        res.end();
-        break;
+// http.createServer(router).listen(3000)
+// function router (req, res) {
+//   console.log('Nueva petición!')
+//   console.log(req.url)
 
-      default:
-        res.write('Error 404: No se lo que quieres');
-        res.end();
-    }
-  
-    res.end();
-}
+//   switch (req.url) {
+//     case '/hola':
+//       res.writeHead(201, { 'Content-Type': 'text/plain' })
+//       res.write('Hola, que tal')
+//       res.end()
+//       break
 
-console.log('Escuchando http en el puerto 3000');
+//     default:
+//       res.write('Error 404: No se lo que quieres')
+//       res.end()
+//   }
+
+//   res.end()
+// }
+
+// console.log('Escuchando http en el puerto 3000')
+
+const server = http.createServer((req, res) => {
+  console.log('request received')
+  res.end('Hola Mundo')
+})
+
+server.listen(0, () => {
+  console.log(`server listening on port http://localhost:${server.address().port}`)
+})

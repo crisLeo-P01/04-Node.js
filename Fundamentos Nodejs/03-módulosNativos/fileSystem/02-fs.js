@@ -1,42 +1,48 @@
-const fs = require('node:fs');
+const fs = require('node:fs')
+const path = require('node:path')
 
-const stats = fs.statSync('./archivo.txt');
+const stats = fs.statSync('./archivo2.txt')
 console.log(
-  stats.isFile(), //> si es un fichero
-  stats.isDirectory(), //> si es un directorio
-  stats.isSymbolicLink(), //> si es un enlace simbólico
-  stats.size //> tamaño en bytes
-);
+  stats.isFile(), // > si es un fichero
+  stats.isDirectory(), // > si es un directorio
+  stats.isSymbolicLink(), // > si es un enlace simbólico
+  stats.size // > tamaño en bytes
+)
 
-console.log('Leyendo el primer archivo...');
-const text = fs.readFileSync('./archivo.txt', 'utf-8');
-console.log(text);
+// > PROCESO LEER UN ARCHIVO --->
+// const filePathLeer = path.join(__dirname, 'archivo.txt') // Cambia 'archivo.txt' por el nombre del archivo que deseas leer
 
-console.log('Leyendo el segundo archivo...');
-const secondText = fs.readFileSync('./archivo2.txt', 'utf-8');
-console.log(secondText);
+// // Leer el contenido del archivo
+// fs.readFile(filePathLeer, 'utf8', (err, data) => {
+//   if (err) {
+//     console.error('Error al leer el archivo:', err)
+//   } else {
+//     console.log('Contenido del archivo:', data)
+//   }
+// })
 
+// > PROCESO ESCRIBIR UN ARCHIVO --->
+const filePathWrite = path.join(__dirname, 'archivodato.txt') // Cambia 'archivo.txt' por el nombre del archivo que quieras
 
-function leer(ruta, cb) {
-  fs.readFile(ruta, (err, data) => {
-    console.log(data.toString());
-  })
-}
+const contenidoNuevo = 'Este es el contenido que quiero escribir en el archivo.'
 
-function escribir(ruta, contenido, cb) {
-  fs.writeFile(ruta, contenido, function(err) {
-    if(err) {
-      console.error('No he podido escribirlo', err);
-    } else {
-      console.log('Se ha escrito correctamente');
-    }
-  })
-}
+// Escribe en el archivo
+fs.writeFile(filePathWrite, contenidoNuevo, (err) => {
+  if (err) {
+    console.error('Error al escribir en el archivo:', err)
+  } else {
+    console.log('Contenido escrito correctamente en el archivo.')
+  }
+})
 
-function borrar(ruta, cb) {
-  fs.unlink(ruta, cb);
-}
+// > PROCESO BORRAR UN ARCHIVO --->
+// const filePathBorrar = path.join(__dirname, 'archivo.txt') // Cambia 'archivo.txt' por el nombre del archivo que deseas borrar
 
-// borrar(__dirname + '/archivo1.txt', console.log);
-//escribir(__dirname + '/archivo1.txt', 'Soy un archivo nuevo', console.log);
-// leer(__dirname + '/archivo.txt');
+// // Borrar el archivo
+// fs.unlink(filePathBorrar, (err) => {
+//   if (err) {
+//     console.error('Error al borrar el archivo:', err)
+//   } else {
+//     console.log('Archivo borrado correctamente.')
+//   }
+// })

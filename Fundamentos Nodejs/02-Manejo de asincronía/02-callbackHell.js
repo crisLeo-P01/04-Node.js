@@ -1,39 +1,39 @@
-console.log('Empezando proceso');
+console.log('Empezando proceso')
 
-function hola(nombre, miCallback) {
+function hola (nombre, miCallback) {
   setTimeout(() => {
-    console.log('Hola ' + nombre);
+    console.log('Hola ' + nombre)
     miCallback(nombre)
-  }, 1500);
-}
-
-function hablar(cbHablar) {
-  setTimeout(function() {
-    console.log('Bla bla bla...');
-    cbHablar();
   }, 1500)
 }
 
-function conversacion(nombre, veces, callback) {
-  if(veces > 0) {
-    hablar(function() {
-      conversacion(nombre, --veces, callback);
+function hablar (cbHablar) {
+  setTimeout(function () {
+    console.log('Bla bla bla...')
+    cbHablar()
+  }, 1500)
+}
+
+function conversacion (nombre, veces, callback) {
+  if (veces > 0) {
+    hablar(function () {
+      conversacion(nombre, --veces, callback)
     })
   } else {
     adios(nombre, callback)
   }
 }
 
-function adios(nombre, otroCallback) {
-  setTimeout(function() {
-    console.log('Adios ' + nombre);
+function adios (nombre, otroCallback) {
+  setTimeout(function () {
+    console.log('Adios ' + nombre)
     otroCallback()
   }, 1500)
 }
 
-hola('Cristian', function(nombre) {
-  conversacion(nombre, 3, function() {
-    console.log('Proceso Terminado');
+hola('Cristian', function (nombre) {
+  conversacion(nombre, 3, function () {
+    console.log('Proceso Terminado')
   })
 })
 

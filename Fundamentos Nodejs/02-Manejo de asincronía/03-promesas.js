@@ -1,28 +1,29 @@
-console.log('Empezando proceso');
+/* eslint-disable prefer-promise-reject-errors */
+console.log('Empezando proceso')
 
-function hola(nombre) {
-  return new Promise(function(resolve, reject) {
+function hola (nombre) {
+  return new Promise(function (resolve, reject) {
     setTimeout(() => {
-      console.log('Hola ' + nombre);
-      resolve(nombre);
-    }, 1500);
+      console.log('Hola ' + nombre)
+      resolve(nombre)
+    }, 1500)
   })
 }
 
-function hablar(nombre) {
+function hablar (nombre) {
   return new Promise((resolve, reject) => {
-    setTimeout(function() {
-      console.log('Bla bla bla...');
+    setTimeout(function () {
+      console.log('Bla bla bla...')
       // resolve(nombre);
       reject('Hay un error')
     }, 1500)
   })
 }
 
-function adios(nombre) {
+function adios (nombre) {
   return new Promise((resolve, reject) => {
-    setTimeout(function() {
-      console.log('Adios ' + nombre);
+    setTimeout(function () {
+      console.log('Adios ' + nombre)
       resolve()
     }, 1500)
   })
@@ -35,9 +36,9 @@ hola('Cristian')
   .then(hablar)
   .then(adios)
   .then((nombre) => {
-    console.log('Terminando proceso');
+    console.log('Terminando proceso')
   })
   .catch(error => {
-    console.error('Ha habido un error');
-    console.error(error);
+    console.error('Ha habido un error')
+    console.error(error)
   })
