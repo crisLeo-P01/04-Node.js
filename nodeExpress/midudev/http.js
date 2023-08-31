@@ -1,8 +1,6 @@
 const http = require('node:http') // Protocolo HTTP
 const fs = require('node:fs')
 
-const desiredPort = process.env.PORT ?? 1234
-
 const processRequest = (req, res) => {
   res.setHeader('Content-Type', 'text/html; charset=utf-8')
 
@@ -29,6 +27,6 @@ const processRequest = (req, res) => {
 }
 const server = http.createServer(processRequest);
 
-server.listen(desiredPort, () => {
-  console.log(`Mi localhost es http://localhost:${desiredPort}`);
-});
+server.listen(3000, () => {
+  console.log(`Server listening on port http://localhost:${server.address().port}`);
+})

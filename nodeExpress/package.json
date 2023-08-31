@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon api/index.js",
-    "dev:2": "nodemon midudev/app.js",
+    "dev:2": "node --watch midudev/app.js",
     "start": "node api/index.js",
     "lint": "eslint"
   },
