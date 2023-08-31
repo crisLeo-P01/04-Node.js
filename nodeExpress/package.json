@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon api/index.js",
+    "dev:2": "nodemon midudev/app.js",
     "start": "node api/index.js",
     "lint": "eslint"
   },
@@ -21,7 +22,7 @@
     "@faker-js/faker": "^8.0.2",
     "@hapi/boom": "^10.0.1",
     "cors": "^2.8.5",
-    "express": "^4.18.2",
+    "express": "4.18.2",
     "joi": "^17.9.2"
   }
 }
