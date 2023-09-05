@@ -28,5 +28,8 @@ PATCH http://localhost:3243/movies/dcdd0fad-a94c-4810-8acc-5f108d3b18c3
 Content-Type: application/json
 
 {
-  "year": 1993
+  "title": "Mates con dulce de leche",
+  "year": 2017,
+  "director": "Cristian Paiva",
+  "duration": 204
 }

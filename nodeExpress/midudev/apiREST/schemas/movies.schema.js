@@ -7,6 +7,7 @@ const moviesSchemas = z.object({
   }),
   year: z.number().int().min(1900).max(2024),
   director: z.string(),
+  duration: z.number().int(),
   rate: z.number().min(0).max(10).default(5),
   poster: z.string().url({
     message: 'Poster must be a valid URL'
@@ -24,6 +25,11 @@ function validateMovie(object) {
   return moviesSchemas.safeParse(object)
 }
 
+function validatePartialMovie(input) {
+  return moviesSchemas.partial().safeParse(input)
+}
+
 module.exports = {
-  validateMovie
+  validateMovie,
+  validatePartialMovie
 }
