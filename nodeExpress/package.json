@@ -3,11 +3,9 @@
   "version": "0.1.0",
   "description": "My store",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "dev": "nodemon api/index.js",
-    "dev:2": "node --watch midudev/app.js",
-    "start": "node api/index.js",
-    "lint": "eslint"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "CristianLeonardo",
   "license": "MIT",
@@ -24,6 +22,7 @@
     "cors": "2.8.5",
     "express": "4.18.2",
     "joi": "^17.9.2",
+    "mysql2": "3.6.1",
     "zod": "3.22.2"
   }
 }
