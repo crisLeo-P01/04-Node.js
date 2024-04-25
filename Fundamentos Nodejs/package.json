@@ -23,9 +23,6 @@
     "puppeteer": "^21.0.3",
     "sharp": "^0.32.4"
   },
-  "eslintConfig": {
-    "extends": "standard"
-  },
   "devDependencies": {
     "standard": "^17.1.0"
   }
