@@ -1,12 +1,12 @@
 console.log(process.cwd());
 
-process.on('beforeExit',() => {
+process.on('beforeExit', () => {
   console.log('El proceso va a terminar');
 });
 
-process.on('exit',() => {
+process.on('exit', () => {
   console.log('El proceso finalizo');
-  setTimeout(function() {
+  setTimeout(function () {
     console.log('Esto NO se va a ejecutar');
   }, 0);
 });
