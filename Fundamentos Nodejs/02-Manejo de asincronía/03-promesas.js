@@ -69,45 +69,45 @@
 
 // console.log('Proceso finalizado');
 
-console.log('Pedido de pizzas Comenzado');
+console.log("Pedido de pizzas Comenzado");
 const estatusPedido = () => {
-  return Math.random() < 0.8
-}
+  return Math.random() < 0.8;
+};
 
 const miPedidoDePizza = new Promise((resolve, reject) => {
   setTimeout(() => {
     if (estatusPedido()) {
-      resolve('Pedido exitoso! Su pizza esta en camino')
+      resolve("Pedido exitoso! Su pizza esta en camino");
     } else {
-      reject('Ocurrio un error. Por favor intente nuevamente')
+      reject("Ocurrio un error. Por favor intente nuevamente");
     }
-  }, 3000)
-})
+  }, 3000);
+});
 
 // TOTAL DE REEMPLAZO
 const manejarPedido = (mensajeDeConfirmacion) => {
   console.log(mensajeDeConfirmacion);
-}
+};
 
 const rechazarPedido = (mensajeDeError) => {
   console.log(mensajeDeError);
-}
+};
 
 // miPedidoDePizza.then(manejarPedido, rechazarPedido)
 
 // --------- Esto 👆 es reemplazado de forma mas concisa por esto 👇
 
 // miPedidoDePizza
-//   .then((mensajeDeConfirmacion) => {
-//     console.log(mensajeDeConfirmacion);
-//   })
-//   // .then(null, (mensajeDeError) => {
-//   //   console.log(mensajeDeError);
-//   // })
+//  .then((mensajeDeConfirmacion) => {
+//    console.log(mensajeDeConfirmacion);
+//  })
+// .then(null, (mensajeDeError) => {
+//    console.log(mensajeDeError);
+// })
 
 //   // --------- Esto 👆 es reemplazado de forma mas concisa por esto 👇
 //   .catch((mensajeDeError) => {
 //     console.log(mensajeDeError);
 //   })
 
-miPedidoDePizza.then(manejarPedido).catch(rechazarPedido)
+miPedidoDePizza.then(manejarPedido).catch(rechazarPedido);

@@ -1,41 +1,41 @@
-console.log('Empezando proceso')
+console.log("Empezando proceso");
 
-function hola (nombre, miCallback) {
+function hola(nombre, miCallback) {
   setTimeout(() => {
-    console.log('Hola ' + nombre)
-    miCallback(nombre)
-  }, 1500)
+    console.log("Hola " + nombre);
+    miCallback(nombre);
+  }, 1500);
 }
 
-function hablar (cbHablar) {
+function hablar(cbHablar) {
   setTimeout(function () {
-    console.log('Bla bla bla...')
-    cbHablar()
-  }, 1500)
+    console.log("Bla bla bla...");
+    cbHablar();
+  }, 1500);
 }
 
-function conversacion (nombre, veces, callback) {
+function conversacion(nombre, veces, callback) {
   if (veces > 0) {
     hablar(function () {
-      conversacion(nombre, --veces, callback)
-    })
+      conversacion(nombre, --veces, callback);
+    });
   } else {
-    adios(nombre, callback)
+    adios(nombre, callback);
   }
 }
 
-function adios (nombre, otroCallback) {
+function adios(nombre, otroCallback) {
   setTimeout(function () {
-    console.log('Adios ' + nombre)
-    otroCallback()
-  }, 1500)
+    console.log("Adios " + nombre);
+    otroCallback();
+  }, 1500);
 }
 
-hola('Cristian', function (nombre) {
+hola("Cristian", function (nombre) {
   conversacion(nombre, 3, function () {
-    console.log('Proceso Terminado')
-  })
-})
+    console.log("Proceso Terminado");
+  });
+});
 
 // Con esto 👆 resolvemos el callback hell 👇 y evitamos muchos errores
 
