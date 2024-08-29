@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "electron ./06-herramientas/electron",
+    "start": "electron ./06-herramientas/03-electron",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "gulp build",
     "serve": "gulp serve"
