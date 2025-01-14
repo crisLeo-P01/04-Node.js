@@ -34,4 +34,4 @@ routerMatematicas.get('/:tema/:nivel', (req, res) => {
   res.send(JSON.stringify(resultados))
 })
 
-module.exports = routerMatematicas
+module.exports = routerMatematicas;

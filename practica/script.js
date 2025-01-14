@@ -1,38 +1,24 @@
-const fs = require("fs");
+const fs = require('fs');
+const path = require('path');
 
-fs.mkdir("archivos", (err) => {
-  if (err) {
-    console.log("Se produjo un error al crear la carpeta");
+const carpetaArchivo = path.join(__dirname, 'carpetaArchivo');
+
+fs.mkdir(carpetaArchivo, (err) => {
+  if(err) {
+    console.err(err.message)
   } else {
-    console.log("Carpeta creada");
-  }
-});
-
-fs.writeFile("./archivos/archivoNuevo.txt", "", (err) => {
-  if (err) {
-    console.log("Se produjo un error al crear el archivo: ", err.message);
-  } else {
-    console.log("Archivo creado de forma exitosa");
-  }
-});
-
-const incluirTexto = "Esto es una linea de texto a incluir en el archivo";
-
-fs.appendFile("./archivos/archivoNuevo.txt", incluirTexto, "utf8", (err, data) => {
-  if (err) {
-    console.log("Se produjo un error al incluir texto en el archivo:", err);
-    return;
+    console.log('carpeta creada');
   }
 
-  console.log("Se intrdujo el texto de forma exitosa:", data);
-});
+  const archivo = path.join(carpetaArchivo, 'archivoTexto.txt');
 
-setTimeout(() => {
-  fs.unlink("./archivos/archivoNuevo.txt", (err) => {
-    if (err) {
-      console.log("Se produjo un error al eliminar el archivo: ", err);
+  let texto = 'soy un texto dentro de un archivo';
+
+  fs.writeFile(archivo, texto, 'utf-8', (err) => {
+    if(err) {
+      console.error(err.message);
     } else {
-      console.log("Se elimino el archivo de forma exitosa");
+      console.log('Archivo creado');
     }
-  });
-}, 10000);
+  })
+})

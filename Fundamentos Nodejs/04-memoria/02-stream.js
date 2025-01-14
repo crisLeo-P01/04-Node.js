@@ -8,18 +8,18 @@ const redableStream = fs.createReadStream(__dirname + '/input.txt')
 
 redableStream.setEncoding('UTF8')
 redableStream.on('data', function (chunk) {
-  console.log(chunk)
-  // console.log(chunk.toString());
+    console.log(chunk)
+    // console.log(chunk.toString());
 
-  /* Esto no es la mejor opción cuando ya sabemos
-  la codificación del archivo que va a venir lo que podemos hacer
-  es indicarle con setEncoding() */
+    /* Esto no es la mejor opción cuando ya sabemos
+    la codificación del archivo que va a venir lo que podemos hacer
+    es indicarle con setEncoding() */
 
-  data += chunk
+    data += chunk
 })
 
 redableStream.on('end', function () {
-  console.log(data)
+    console.log(data)
 })
 
 // > Ya son un buffer de escritura
@@ -29,17 +29,17 @@ process.stdout.write('tal')
 
 const Transform = stream.Transform
 function Mayus () {
-  Transform.call(this)
+    Transform.call(this)
 }
 
 util.inherits(Mayus, Transform)
 Mayus.prototype._transform = function (chunk, codif, cb) {
-  const chunkMayus = chunk.toString().toUpperCase()
-  this.push(chunkMayus)
-  cb()
+    const chunkMayus = chunk.toString().toUpperCase()
+    this.push(chunkMayus)
+    cb()
 }
 
 const mayus = new Mayus()
 redableStream
-  .pipe(mayus)
-  .pipe(process.stdout)
+    .pipe(mayus)
+    .pipe(process.stdout)
